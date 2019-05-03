@@ -1,0 +1,2 @@
+This file has two lines.
+The second line has no newline at the end.
