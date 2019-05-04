@@ -1,4 +1,5 @@
-gcc test.c get_next_line.c -L. -lft -o test
+make -C ../libft/ fclean && make -C ../libft/
+gcc -Wall -Wextra -Werror -I ../libft/ -I ../ -L ../libft/ -lft test.c ../get_next_line.c -o test
 read -p "Press enter..."
 echo "\n\n"
 ./test test1.txt

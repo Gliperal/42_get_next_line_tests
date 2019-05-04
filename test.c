@@ -135,7 +135,8 @@ void binary_test()
 void bad_fd_test()
 {
 	char *line;
-	int arr[] = {16, 64, 1024, 65536, -1, -2};
+	// Max file descriptors (mac): ulimit -n
+	int arr[] = {16, 64, 4865, 65536, -1, -2};
 	for(int i = 0; i < 6; i++)
 	{
 		printf("Trying file descriptor %d...\n", arr[i]);
