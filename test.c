@@ -5,6 +5,34 @@
 
 #include "get_next_line.h"
 
+void malloc_all()
+{
+	static void *mem1[0x10000000];
+
+	int i = 0;
+	int malloc_fails = 0;
+	int memsize = 0x10000;
+	while (i < 0x10000000)
+	{
+		mem1[i] = malloc(memsize * sizeof(void));
+		if (mem1[i])
+			i++;
+		else
+		{
+			malloc_fails++;
+			write(1, "\nF\n", 3);
+		}
+		if (!(i & 0x1ffff))
+			write(1, "A", 1);
+		if (!(i & 0x7ffffff))
+		{
+			write(1, "\nB", 1);
+			memsize = 0x1000;
+		}
+	}
+	write(1, "\n:)\n", 3);
+}
+
 int open_file(const char *file)
 {
 	int fd;
